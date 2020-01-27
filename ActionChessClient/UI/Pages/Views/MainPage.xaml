@@ -1,0 +1,54 @@
+﻿<Page x:Class="ActionChessClient.MainPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      xmlns:actionChessClient="clr-namespace:ActionChessClient"
+      mc:Ignorable="d" 
+      x:ClassModifier="internal"
+      Title="MainPage">
+    <Page.DataContext>
+        <actionChessClient:CMainPageViewModel></actionChessClient:CMainPageViewModel>
+    </Page.DataContext>
+
+    <Grid
+        Width="{DynamicResource WindowWidth}">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="3*"></ColumnDefinition>
+            <ColumnDefinition Width="7*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid>
+            <materialDesign:Card
+                Grid.Column="0"
+                Height="{DynamicResource BoardSize}"
+                Padding="15">
+                <StackPanel>
+                    <TextBlock
+                        FontSize="38"
+                        Foreground="{DynamicResource BackgroundBrush}"
+                        FontWeight="Bold"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center">
+                        ActionChess
+                    </TextBlock>
+                    <Separator Style="{StaticResource MaterialDesignDarkSeparator}"/>
+                    <ContentControl Content="{Binding ActualControl}"></ContentControl>
+                </StackPanel>
+            </materialDesign:Card>
+            <Label
+                VerticalAlignment="Bottom"
+                HorizontalAlignment="Center"
+                Foreground="{DynamicResource FadedBrash}"
+                Visibility="Hidden">
+                Дизайн Студии Артемия Лебедева
+            </Label>
+        </Grid>
+        <ContentControl
+            Content="{Binding ActualBoardRecord}"
+            Grid.Column="1"
+            Width="{DynamicResource BoardSize}"
+            Height="{DynamicResource BoardSize}">
+        </ContentControl>
+    </Grid>
+</Page>

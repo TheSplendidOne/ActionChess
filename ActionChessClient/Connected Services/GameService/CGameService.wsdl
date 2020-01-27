@@ -1,0 +1,289 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="CGameService" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsp:Policy wsu:Id="NetTcpBinding_IGameSeekerService_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <msb:BinaryEncoding xmlns:msb="http://schemas.microsoft.com/ws/06/2004/mspolicy/netbinary1" />
+        <sp:TransportBinding xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <wsp:Policy>
+            <sp:TransportToken>
+              <wsp:Policy>
+                <msf:WindowsTransportSecurity xmlns:msf="http://schemas.microsoft.com/ws/2006/05/framing/policy">
+                  <msf:ProtectionLevel>EncryptAndSign</msf:ProtectionLevel>
+                </msf:WindowsTransportSecurity>
+              </wsp:Policy>
+            </sp:TransportToken>
+            <sp:AlgorithmSuite>
+              <wsp:Policy>
+                <sp:Basic256 />
+              </wsp:Policy>
+            </sp:AlgorithmSuite>
+            <sp:Layout>
+              <wsp:Policy>
+                <sp:Strict />
+              </wsp:Policy>
+            </sp:Layout>
+          </wsp:Policy>
+        </sp:TransportBinding>
+        <wsaw:UsingAddressing />
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="NetTcpBinding_IGameManagerService_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <msb:BinaryEncoding xmlns:msb="http://schemas.microsoft.com/ws/06/2004/mspolicy/netbinary1" />
+        <sp:TransportBinding xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <wsp:Policy>
+            <sp:TransportToken>
+              <wsp:Policy>
+                <msf:WindowsTransportSecurity xmlns:msf="http://schemas.microsoft.com/ws/2006/05/framing/policy">
+                  <msf:ProtectionLevel>EncryptAndSign</msf:ProtectionLevel>
+                </msf:WindowsTransportSecurity>
+              </wsp:Policy>
+            </sp:TransportToken>
+            <sp:AlgorithmSuite>
+              <wsp:Policy>
+                <sp:Basic256 />
+              </wsp:Policy>
+            </sp:AlgorithmSuite>
+            <sp:Layout>
+              <wsp:Policy>
+                <sp:Strict />
+              </wsp:Policy>
+            </sp:Layout>
+          </wsp:Policy>
+        </sp:TransportBinding>
+        <wsaw:UsingAddressing />
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="NetTcpBinding_IVirtualBoardService_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <msb:BinaryEncoding xmlns:msb="http://schemas.microsoft.com/ws/06/2004/mspolicy/netbinary1" />
+        <sp:TransportBinding xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <wsp:Policy>
+            <sp:TransportToken>
+              <wsp:Policy>
+                <msf:WindowsTransportSecurity xmlns:msf="http://schemas.microsoft.com/ws/2006/05/framing/policy">
+                  <msf:ProtectionLevel>EncryptAndSign</msf:ProtectionLevel>
+                </msf:WindowsTransportSecurity>
+              </wsp:Policy>
+            </sp:TransportToken>
+            <sp:AlgorithmSuite>
+              <wsp:Policy>
+                <sp:Basic256 />
+              </wsp:Policy>
+            </sp:AlgorithmSuite>
+            <sp:Layout>
+              <wsp:Policy>
+                <sp:Strict />
+              </wsp:Policy>
+            </sp:Layout>
+          </wsp:Policy>
+        </sp:TransportBinding>
+        <wsaw:UsingAddressing />
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import schemaLocation="http://localhost:8331/?xsd=xsd0" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="http://localhost:8331/?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://localhost:8331/?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/GameService" />
+      <xsd:import schemaLocation="http://localhost:8331/?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/Animator" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="IGameSeekerService_StartSearchGame_InputMessage">
+    <wsdl:part name="parameters" element="tns:StartSearchGame" />
+  </wsdl:message>
+  <wsdl:message name="IGameSeekerService_CancelSearchGame_InputMessage">
+    <wsdl:part name="parameters" element="tns:CancelSearchGame" />
+  </wsdl:message>
+  <wsdl:message name="IGameSeekerService_CreateGame_OutputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:CreateGame" />
+  </wsdl:message>
+  <wsdl:message name="IGameManagerService_ConnectGameManager_InputMessage">
+    <wsdl:part name="parameters" element="tns:ConnectGameManager" />
+  </wsdl:message>
+  <wsdl:message name="IGameManagerService_Leave_InputMessage">
+    <wsdl:part name="parameters" element="tns:Leave" />
+  </wsdl:message>
+  <wsdl:message name="IGameManagerService_ServerIsReady_OutputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:ServerIsReady" />
+  </wsdl:message>
+  <wsdl:message name="IGameManagerService_EndRound_OutputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:EndRound" />
+  </wsdl:message>
+  <wsdl:message name="IVirtualBoardService_ConnectBoard_InputMessage">
+    <wsdl:part name="parameters" element="tns:ConnectBoard" />
+  </wsdl:message>
+  <wsdl:message name="IVirtualBoardService_TryMovePiece_InputMessage">
+    <wsdl:part name="parameters" element="tns:TryMovePiece" />
+  </wsdl:message>
+  <wsdl:message name="IVirtualBoardService_MovePiece_OutputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:MovePiece" />
+  </wsdl:message>
+  <wsdl:message name="IVirtualBoardService_HandleCollision_OutputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:HandleCollision" />
+  </wsdl:message>
+  <wsdl:message name="IVirtualBoardService_TransformPawnToQueen_OutputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:TransformPawnToQueen" />
+  </wsdl:message>
+  <wsdl:portType name="IGameSeekerService">
+    <wsdl:operation name="StartSearchGame">
+      <wsdl:input wsaw:Action="http://tempuri.org/IGameSeekerService/StartSearchGame" message="tns:IGameSeekerService_StartSearchGame_InputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CancelSearchGame">
+      <wsdl:input wsaw:Action="http://tempuri.org/IGameSeekerService/CancelSearchGame" message="tns:IGameSeekerService_CancelSearchGame_InputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CreateGame">
+      <wsdl:output wsaw:Action="http://tempuri.org/IGameSeekerService/CreateGame" message="tns:IGameSeekerService_CreateGame_OutputCallbackMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="IGameManagerService">
+    <wsdl:operation name="ConnectGameManager">
+      <wsdl:input wsaw:Action="http://tempuri.org/IGameManagerService/ConnectGameManager" message="tns:IGameManagerService_ConnectGameManager_InputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Leave">
+      <wsdl:input wsaw:Action="http://tempuri.org/IGameManagerService/Leave" message="tns:IGameManagerService_Leave_InputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ServerIsReady">
+      <wsdl:output wsaw:Action="http://tempuri.org/IGameManagerService/ServerIsReady" message="tns:IGameManagerService_ServerIsReady_OutputCallbackMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="EndRound">
+      <wsdl:output wsaw:Action="http://tempuri.org/IGameManagerService/EndRound" message="tns:IGameManagerService_EndRound_OutputCallbackMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="IVirtualBoardService">
+    <wsdl:operation name="ConnectBoard">
+      <wsdl:input wsaw:Action="http://tempuri.org/IVirtualBoardService/ConnectBoard" message="tns:IVirtualBoardService_ConnectBoard_InputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="TryMovePiece">
+      <wsdl:input wsaw:Action="http://tempuri.org/IVirtualBoardService/TryMovePiece" message="tns:IVirtualBoardService_TryMovePiece_InputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="MovePiece">
+      <wsdl:output wsaw:Action="http://tempuri.org/IVirtualBoardService/MovePiece" message="tns:IVirtualBoardService_MovePiece_OutputCallbackMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="HandleCollision">
+      <wsdl:output wsaw:Action="http://tempuri.org/IVirtualBoardService/HandleCollision" message="tns:IVirtualBoardService_HandleCollision_OutputCallbackMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="TransformPawnToQueen">
+      <wsdl:output wsaw:Action="http://tempuri.org/IVirtualBoardService/TransformPawnToQueen" message="tns:IVirtualBoardService_TransformPawnToQueen_OutputCallbackMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="NetTcpBinding_IGameSeekerService" type="tns:IGameSeekerService">
+    <wsp:PolicyReference URI="#NetTcpBinding_IGameSeekerService_policy" />
+    <soap12:binding transport="http://schemas.microsoft.com/soap/tcp" />
+    <wsdl:operation name="StartSearchGame">
+      <soap12:operation soapAction="http://tempuri.org/IGameSeekerService/StartSearchGame" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="CancelSearchGame">
+      <soap12:operation soapAction="http://tempuri.org/IGameSeekerService/CancelSearchGame" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="CreateGame">
+      <soap12:operation soapAction="http://tempuri.org/IGameSeekerService/CreateGame" style="document" />
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="NetTcpBinding_IGameManagerService" type="tns:IGameManagerService">
+    <wsp:PolicyReference URI="#NetTcpBinding_IGameManagerService_policy" />
+    <soap12:binding transport="http://schemas.microsoft.com/soap/tcp" />
+    <wsdl:operation name="ConnectGameManager">
+      <soap12:operation soapAction="http://tempuri.org/IGameManagerService/ConnectGameManager" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="Leave">
+      <soap12:operation soapAction="http://tempuri.org/IGameManagerService/Leave" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="ServerIsReady">
+      <soap12:operation soapAction="http://tempuri.org/IGameManagerService/ServerIsReady" style="document" />
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EndRound">
+      <soap12:operation soapAction="http://tempuri.org/IGameManagerService/EndRound" style="document" />
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="NetTcpBinding_IVirtualBoardService" type="tns:IVirtualBoardService">
+    <wsp:PolicyReference URI="#NetTcpBinding_IVirtualBoardService_policy" />
+    <soap12:binding transport="http://schemas.microsoft.com/soap/tcp" />
+    <wsdl:operation name="ConnectBoard">
+      <soap12:operation soapAction="http://tempuri.org/IVirtualBoardService/ConnectBoard" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="TryMovePiece">
+      <soap12:operation soapAction="http://tempuri.org/IVirtualBoardService/TryMovePiece" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="MovePiece">
+      <soap12:operation soapAction="http://tempuri.org/IVirtualBoardService/MovePiece" style="document" />
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="HandleCollision">
+      <soap12:operation soapAction="http://tempuri.org/IVirtualBoardService/HandleCollision" style="document" />
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TransformPawnToQueen">
+      <soap12:operation soapAction="http://tempuri.org/IVirtualBoardService/TransformPawnToQueen" style="document" />
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="CGameService">
+    <wsdl:port name="NetTcpBinding_IGameSeekerService" binding="tns:NetTcpBinding_IGameSeekerService">
+      <soap12:address location="net.tcp://localhost:8332/" />
+      <wsa10:EndpointReference>
+        <wsa10:Address>net.tcp://localhost:8332/</wsa10:Address>
+        <Identity xmlns="http://schemas.xmlsoap.org/ws/2006/02/addressingidentity">
+          <Upn>DESKTOP-7PAVH4U\mi</Upn>
+        </Identity>
+      </wsa10:EndpointReference>
+    </wsdl:port>
+    <wsdl:port name="NetTcpBinding_IGameManagerService" binding="tns:NetTcpBinding_IGameManagerService">
+      <soap12:address location="net.tcp://localhost:8332/" />
+      <wsa10:EndpointReference>
+        <wsa10:Address>net.tcp://localhost:8332/</wsa10:Address>
+        <Identity xmlns="http://schemas.xmlsoap.org/ws/2006/02/addressingidentity">
+          <Upn>DESKTOP-7PAVH4U\mi</Upn>
+        </Identity>
+      </wsa10:EndpointReference>
+    </wsdl:port>
+    <wsdl:port name="NetTcpBinding_IVirtualBoardService" binding="tns:NetTcpBinding_IVirtualBoardService">
+      <soap12:address location="net.tcp://localhost:8332/" />
+      <wsa10:EndpointReference>
+        <wsa10:Address>net.tcp://localhost:8332/</wsa10:Address>
+        <Identity xmlns="http://schemas.xmlsoap.org/ws/2006/02/addressingidentity">
+          <Upn>DESKTOP-7PAVH4U\mi</Upn>
+        </Identity>
+      </wsa10:EndpointReference>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

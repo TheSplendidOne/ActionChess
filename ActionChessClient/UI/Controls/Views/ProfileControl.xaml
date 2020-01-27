@@ -1,0 +1,118 @@
+﻿<UserControl
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
+             xmlns:actionChessClient="clr-namespace:ActionChessClient"
+             xmlns:System="clr-namespace:System;assembly=mscorlib" x:Class="ActionChessClient.ProfileControl"
+             mc:Ignorable="d"
+             x:ClassModifier="internal">
+    <UserControl.Resources>
+        <System:Double x:Key="ProfileControlFontSize">16</System:Double>
+        <Thickness x:Key="ProfileControlMargin">0,20,0,0</Thickness>
+        <Thickness x:Key="ProfileControlFreeSpace">10,0,0,0</Thickness>
+    </UserControl.Resources>
+    <StackPanel>
+        <TextBlock
+            VerticalAlignment="Center"
+            HorizontalAlignment="Center"
+            FontSize="26"
+            Foreground="{DynamicResource BorderBrush}">
+            <Run Text="Profile"/>
+        </TextBlock>
+        <StackPanel
+            Margin="{DynamicResource ProfileControlMargin}"
+            Orientation="Horizontal">
+            <TextBlock
+                VerticalAlignment="Center"
+                HorizontalAlignment="Center"
+                FontSize="{DynamicResource ProfileControlFontSize}"
+                Foreground="{DynamicResource BorderBrush}">
+                <Run Text="Nickname:"/>
+            </TextBlock>
+            <TextBlock
+                Margin="{DynamicResource ProfileControlFreeSpace}"
+                FontSize="{DynamicResource ProfileControlFontSize}"
+                VerticalAlignment="Center"
+                HorizontalAlignment="Center"
+                Foreground="{DynamicResource BorderBrush}"
+                Text="{Binding Nickname, UpdateSourceTrigger=PropertyChanged}"/>
+        </StackPanel>
+        <StackPanel
+            Margin="{DynamicResource ProfileControlMargin}"
+            Orientation="Horizontal">
+            <TextBlock
+                FontSize="{DynamicResource ProfileControlFontSize}"
+                VerticalAlignment="Center"
+                HorizontalAlignment="Center"
+                Foreground="{DynamicResource BorderBrush}">
+                <Run Text="RegistrationDate:"/>
+            </TextBlock>
+            <TextBlock
+                Margin="{DynamicResource ProfileControlFreeSpace}"
+                FontSize="{DynamicResource ProfileControlFontSize}"
+                VerticalAlignment="Center"
+                HorizontalAlignment="Center"
+                Foreground="{DynamicResource BorderBrush}"
+                Text="{Binding RegistrationDate, UpdateSourceTrigger=PropertyChanged}"/>
+        </StackPanel>
+        <StackPanel
+            Margin="{DynamicResource ProfileControlMargin}"
+            Orientation="Horizontal">
+            <TextBlock
+                FontSize="{DynamicResource ProfileControlFontSize}"
+                VerticalAlignment="Center"
+                HorizontalAlignment="Center"
+                Foreground="{DynamicResource BorderBrush}">
+                <Run Text="GamesCount:"/>
+            </TextBlock>
+            <TextBlock
+                Margin="{DynamicResource ProfileControlFreeSpace}"
+                FontSize="{DynamicResource ProfileControlFontSize}"
+                VerticalAlignment="Center"
+                HorizontalAlignment="Center"
+                Foreground="{DynamicResource BorderBrush}"
+                Text="{Binding GamesCount, UpdateSourceTrigger=PropertyChanged}"/>
+        </StackPanel>
+        <StackPanel
+            Margin="{DynamicResource ProfileControlMargin}"
+            Orientation="Horizontal">
+            <TextBlock
+                FontSize="{DynamicResource ProfileControlFontSize}"
+                VerticalAlignment="Center"
+                HorizontalAlignment="Center"
+                Foreground="{DynamicResource BorderBrush}">
+                <Run Text="WinRate:"/>
+            </TextBlock>
+            <TextBlock
+                Margin="{DynamicResource ProfileControlFreeSpace}"
+                FontSize="{DynamicResource ProfileControlFontSize}"
+                VerticalAlignment="Center"
+                HorizontalAlignment="Center"
+                Foreground="{DynamicResource BorderBrush}"
+                Text="{Binding WinRate, UpdateSourceTrigger=PropertyChanged}"/>
+        </StackPanel>
+        <ScrollViewer VerticalScrollBarVisibility="Auto"
+                      CanContentScroll="False"
+                      MaxHeight="300"
+                      Foreground="{DynamicResource BorderBrush}"
+                      Margin="{DynamicResource ProfileControlMargin}">
+            <StackPanel
+                x:Name="GamesList"/>
+        </ScrollViewer>
+        <TextBlock
+            FontSize="12"
+            VerticalAlignment="Center"
+            HorizontalAlignment="Center"
+            Margin="{DynamicResource ProfileControlMargin}"
+            Foreground="{DynamicResource BorderBrush}">
+            <i:Interaction.Triggers>
+                <i:EventTrigger EventName="MouseDown">
+                    <i:InvokeCommandAction Command="{Binding ToMenuCommand}"/>
+                </i:EventTrigger>
+            </i:Interaction.Triggers><Run Text="Return to the main menu"/>
+        </TextBlock>
+    </StackPanel>
+</UserControl>

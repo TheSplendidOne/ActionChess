@@ -1,0 +1,164 @@
+﻿<Page
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      xmlns:System="clr-namespace:System;assembly=mscorlib"
+      xmlns:actionChessClient="clr-namespace:ActionChessClient"
+      x:Class="ActionChessClient.GamePage"
+      mc:Ignorable="d" 
+      x:ClassModifier="internal"
+      Title="GamePage"
+      d:DesignWidth="{DynamicResource WindowWidth}"
+      d:DesignHeight="{DynamicResource BoardSize}">
+    <Page.Resources>
+        <System:Double x:Key="CardHeight">628</System:Double>
+        <SolidColorBrush x:Key="CountdownTextBrush" Color="#80FFFFFF"/>
+    </Page.Resources>
+    <Grid
+        Width="{DynamicResource WindowWidth}">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="3*"/>
+            <ColumnDefinition Width="7*"/>
+        </Grid.ColumnDefinitions>
+        <materialDesign:Card
+            Padding="30"
+            Grid.Column="0">
+            <Grid Height="{DynamicResource CardHeight}">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="2*"/>
+                    <RowDefinition/>
+                    <RowDefinition Height="4*"/>
+                    <RowDefinition/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition/>
+                    <RowDefinition Height="4*"/>
+                    <RowDefinition/>
+                    <RowDefinition Height="2*"/>
+                </Grid.RowDefinitions>
+                <ContentControl
+                    x:Name="BlackPlayerBadge"
+                    Grid.Row="0"/>
+                <Separator Grid.Row="1" Style="{StaticResource MaterialDesignDarkSeparator}"/>
+                <TextBlock
+                    FontSize="100"
+                    VerticalAlignment="Center"
+                    HorizontalAlignment="Center"
+                    Foreground="{DynamicResource BorderBrush}"
+                    Grid.Row="2"
+                    Text="{Binding BlackPlayerScore}"/>
+                <Separator Grid.Row="3" Style="{StaticResource MaterialDesignDarkSeparator}"/>
+                <TextBlock
+                    FontSize="40"
+                    VerticalAlignment="Center"
+                    HorizontalAlignment="Center"
+                    Foreground="{DynamicResource BorderBrush}"
+                    Grid.Row="4"
+                    Text="ActionChess"/>
+                <Separator Grid.Row="5" Style="{StaticResource MaterialDesignDarkSeparator}"/>
+                <TextBlock
+                    FontSize="100"
+                    VerticalAlignment="Center"
+                    HorizontalAlignment="Center"
+                    Foreground="{DynamicResource BorderBrush}"
+                    Grid.Row="6"
+                    Text="{Binding WhitePlayerScore}"/>
+                <Separator Grid.Row="7" Style="{StaticResource MaterialDesignDarkSeparator}"/>
+                <ContentControl
+                    x:Name="WhitePlayerBadge"
+                    Grid.Row="8"/>
+            </Grid>
+        </materialDesign:Card>
+        <ContentControl
+            x:Name="GameBoard"
+            Grid.Column="1"
+            Content="{Binding GameBoardContent, UpdateSourceTrigger=PropertyChanged}"/>
+        <materialDesign:Card
+            x:Name="RoundResultCard"
+            VerticalAlignment="Center"
+            HorizontalAlignment="Center"
+            Visibility="{Binding RoundResultVisibility, UpdateSourceTrigger=PropertyChanged}"
+            Width="160"
+            Height="240"
+            Padding="10"
+            Grid.Column="1">
+            <StackPanel>
+                <TextBlock
+                    FontSize="28"
+                    VerticalAlignment="Center"
+                    HorizontalAlignment="Center"
+                    Margin="0,20,0,0"
+                    Text="{Binding ResultText, UpdateSourceTrigger=PropertyChanged}"
+                    Foreground="{DynamicResource BackgroundBrush}">
+                </TextBlock>
+                <TextBlock
+                    FontSize="24"
+                    VerticalAlignment="Center"
+                    HorizontalAlignment="Center"
+                    Margin="0,10,0,0"
+                    Text="{Binding ScoreText, UpdateSourceTrigger=PropertyChanged}"
+                    Foreground="{DynamicResource BackgroundBrush}"/>
+                <Button
+                    Margin="0,20,0,0"
+                    Command="{Binding NextRoundCommand}"
+                    BorderBrush="{DynamicResource BorderBrush}"
+                    Background="{DynamicResource BackgroundBrush}">
+                    Next round
+                </Button>
+                <Button
+                    Margin="0,20,0,0"
+                    Command="{Binding LeaveGameCommand}"
+                    BorderBrush="{DynamicResource BorderBrush}"
+                    Background="{DynamicResource WarningBrush}">
+                    Leave game
+                </Button>
+            </StackPanel>
+        </materialDesign:Card>
+        <materialDesign:Card
+            x:Name="GameResultCard"
+            VerticalAlignment="Center"
+            HorizontalAlignment="Center"
+            Visibility="{Binding GameResultVisibility, UpdateSourceTrigger=PropertyChanged}"
+            Width="200"
+            Height="180"
+            Padding="10"
+            Grid.Column="1">
+            <StackPanel>
+                <TextBlock
+                    FontSize="18"
+                    VerticalAlignment="Center"
+                    HorizontalAlignment="Center"
+                    Margin="0,20,0,0"
+                    Text="{Binding ResultText, UpdateSourceTrigger=PropertyChanged}"
+                    Foreground="{DynamicResource BackgroundBrush}">
+                </TextBlock>
+                <TextBlock
+                    FontSize="24"
+                    VerticalAlignment="Center"
+                    HorizontalAlignment="Center"
+                    Margin="0,10,0,0"
+                    Text="{Binding ScoreText, UpdateSourceTrigger=PropertyChanged}"
+                    Foreground="{DynamicResource BackgroundBrush}"/>
+                <Button
+                    Margin="0,20,0,0"
+                    Command="{Binding EndGameCommand}"
+                    BorderBrush="{DynamicResource BorderBrush}"
+                    Background="{DynamicResource BackgroundBrush}">
+                    End game
+                </Button>
+            </StackPanel>
+        </materialDesign:Card>
+        <Grid
+            Grid.Column="1"
+            Background="{DynamicResource FadedBrash}"
+            Visibility="{Binding CountdownVisibility, UpdateSourceTrigger=PropertyChanged}">
+            <Label
+                FontSize="150"
+                VerticalAlignment="Center"
+                HorizontalAlignment="Center"
+                Foreground="{DynamicResource CountdownTextBrush}"
+                Content="{Binding CountdownText, UpdateSourceTrigger=PropertyChanged}"/>
+        </Grid>
+    </Grid>
+</Page>

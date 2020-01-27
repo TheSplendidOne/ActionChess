@@ -1,0 +1,27 @@
+﻿<Application
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             xmlns:System="clr-namespace:System;assembly=mscorlib" x:Class="ActionChessClient.App"
+             StartupUri="UI/MainWindow.xaml">
+    <Application.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Light.xaml"/>
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Defaults.xaml"/>
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Primary/MaterialDesignColor.Blue.xaml"/>
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Accent/MaterialDesignColor.Purple.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+            <SolidColorBrush x:Key="BackgroundBrush" Color="#FFE6912C"/>
+            <SolidColorBrush x:Key="BorderBrush" Color="#FFAD6D21"/>
+            <System:Double x:Key="BoardSize">688</System:Double>
+            <System:Double x:Key="ActiveBoardOpacity">1</System:Double>
+            <System:Double x:Key="InactiveBoardOpacity">0.75</System:Double>
+            <SolidColorBrush x:Key="Transparent" Color="Transparent" ></SolidColorBrush>
+            <SolidColorBrush x:Key="FadedBrash" Color="#89000000"/>
+            <SolidColorBrush x:Key="WarningBrush" Color="OrangeRed"/>
+            <SolidColorBrush x:Key="TimeoutRectangleBrush" Color="Crimson"/>
+            <System:Double x:Key="WindowWidth">983</System:Double>
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>

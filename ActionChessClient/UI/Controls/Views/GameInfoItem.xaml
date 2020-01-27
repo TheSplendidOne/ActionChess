@@ -1,0 +1,121 @@
+﻿<UserControl
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
+             xmlns:actionChessClient="clr-namespace:ActionChessClient"
+             xmlns:System="clr-namespace:System;assembly=mscorlib" x:Class="ActionChessClient.GameInfoItem"
+             mc:Ignorable="d"
+             x:ClassModifier="internal">
+    <UserControl.Resources>
+        <System:Double x:Key="ButtonSize">35</System:Double>
+    </UserControl.Resources>
+    <Grid>
+        <materialDesign:Card
+            Grid.Column="0"
+            Padding="10">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="2*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="3*"/>
+                </Grid.ColumnDefinitions>
+                <Grid Grid.Column="0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="4*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock
+                        Grid.Column="0"
+                        Grid.Row="0"
+                        FontSize="14"
+                        VerticalAlignment="Center"
+                        HorizontalAlignment="Center"
+                        Foreground="{DynamicResource BorderBrush}"
+                        Text="{Binding WhitePlayerNickname, UpdateSourceTrigger=PropertyChanged}"/>
+                    <TextBlock
+                        Grid.Column="0"
+                        Grid.Row="1"
+                        FontSize="14"
+                        VerticalAlignment="Center"
+                        HorizontalAlignment="Center"
+                        Foreground="{DynamicResource BorderBrush}">
+                        <Run Text="vs"/>
+                    </TextBlock>
+                    <TextBlock
+                        Grid.Column="0"
+                        Grid.Row="2"
+                        FontSize="14"
+                        VerticalAlignment="Center"
+                        HorizontalAlignment="Center"
+                        Foreground="{DynamicResource BorderBrush}"
+                        Text="{Binding BlackPlayerNickname, UpdateSourceTrigger=PropertyChanged}"/>
+                    <TextBlock
+                        Grid.Column="1"
+                        Grid.Row="0"
+                        FontSize="14"
+                        VerticalAlignment="Center"
+                        HorizontalAlignment="Center"
+                        Foreground="{DynamicResource BorderBrush}"
+                        Text="{Binding WhitePlayerScore, UpdateSourceTrigger=PropertyChanged}"/>
+                    <TextBlock
+                        Grid.Column="1"
+                        Grid.Row="2"
+                        FontSize="14"
+                        VerticalAlignment="Center"
+                        HorizontalAlignment="Center"
+                        Foreground="{DynamicResource BorderBrush}"
+                        Text="{Binding BlackPlayerScore, UpdateSourceTrigger=PropertyChanged}"/>
+                </Grid>
+                <TextBlock
+                    Grid.Column="1"
+                    FontSize="18"
+                    VerticalAlignment="Center"
+                    HorizontalAlignment="Center"
+                    Foreground="{DynamicResource BorderBrush}"
+                    Text="{Binding WinOrDefeat, UpdateSourceTrigger=PropertyChanged}"/>
+                <StackPanel
+                    Orientation="Horizontal"
+                    Grid.Column="2">
+                    <Button
+                        Margin="0,5,5,5"
+                        Padding="0"
+                        MinHeight="{DynamicResource ButtonSize}"
+                        MinWidth="{DynamicResource ButtonSize}"
+                        BorderBrush="{DynamicResource BorderBrush}"
+                        Background="{DynamicResource BackgroundBrush}"
+                        Opacity="{Binding FirstBoardButtonOpacity}"
+                        Command="{Binding GetBoardRecordCommand}"
+                        CommandParameter="0" Height="{DynamicResource ButtonSize}" Content="1"/>
+                    <Button
+                        Margin="0,5,5,5"
+                        Padding="0"
+                        MinHeight="{DynamicResource ButtonSize}"
+                        MinWidth="{DynamicResource ButtonSize}"
+                        BorderBrush="{DynamicResource BorderBrush}"
+                        Background="{DynamicResource BackgroundBrush}"
+                        Opacity="{Binding SecondBoardButtonOpacity}"
+                        Command="{Binding GetBoardRecordCommand}"
+                        CommandParameter="1" Content="2"/>
+                    <Button
+                        Margin="0,5,5,5"
+                        Padding="0"
+                        MinHeight="{DynamicResource ButtonSize}"
+                        MinWidth="{DynamicResource ButtonSize}"
+                        BorderBrush="{DynamicResource BorderBrush}"
+                        Background="{DynamicResource BackgroundBrush}"
+                        Opacity="{Binding ThirdBoardButtonOpacity}"
+                        Command="{Binding GetBoardRecordCommand}"
+                        CommandParameter="2" Content="3"/>
+                </StackPanel>
+            </Grid>
+        </materialDesign:Card>
+    </Grid>
+</UserControl>
