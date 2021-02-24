@@ -1,6 +1,5 @@
 # ActionChess
 ### Chess based real-time multiplayer strategy
-
 This game is a rethinking of classic chess.
 Two players fight on a regular chessboard using pieces moving according to the classical rules.
 
@@ -31,7 +30,6 @@ These rules make ActionChess a game completely different from classic chess.
 - Ability to view replay of all games
 
 ### About implementation
-
 The project is based on microservice architecture.
 There is a client with a graphical interfsace running on Windows.
 There are three services communicating via TCP on the server side:
@@ -51,3 +49,15 @@ Database Access Service has exclusive access to the database, provides data to t
 - Windows Communication Foundation (WCF)
 - Microsoft SQL Server
 - Entity Framework
+
+### Screenshots
+<img src="https://a.radikal.ru/a03/2102/dc/11c6e6927fc7.png" width="600">
+<img src="https://b.radikal.ru/b10/2102/c9/dcc8e9e57fdd.png" width="600">
+<img src="https://a.radikal.ru/a17/2102/72/fa5069c154f9.png" width="600">
+<img src="https://d.radikal.ru/d23/2102/6f/fb04c338cfa9.png" width="600">
+<img src="https://c.radikal.ru/c11/2102/e4/0eb7db5e91c9.png" width="600">
+<img src="https://c.radikal.ru/c41/2102/db/c7f74368d5e2.png" width="600">
+
+### Overview
+<a href="https://youtu.be/OZS5Vog1Log">Gameplay video</a><br>
+<a href="https://youtu.be/P3OiQbvXd0Q">Main menu</a>
